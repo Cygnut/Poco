@@ -1,0 +1,77 @@
+TODOs:
+    
+    Main issues:
+    
+        Website:
+            Need to attribute sources and make sure we aren't breaking any contractual agreements.
+            DDoS
+    
+    
+    
+    Testing - continual.
+    
+    Other issues:
+        
+        
+        Poco.Importer:
+            Ensure this program will run periodically.
+            Creation year would be an interesting field. I.e. being able to see the most popular thing for a given year.
+            Games source.
+            Books source.
+            Get rid of entities where the name is silly, like ???? ???????
+        
+        WebApp:
+        
+        // Read these:
+        // http://php.net/manual/en/mysqli-result.fetch-array.php
+        // https://dev.mysql.com/doc/apis-php/en/apis-php-mysqli.quickstart.stored-procedures.html
+            
+        
+        DB:
+            
+            Supply rank number of votable entities and all other returning SPs.
+            Need to be careful with escaping in passing fragment to c_searchEntities
+            Use c_getTopScoredEntities to not only get the top 10, but also bottom 10?
+            Use transactions for vote-writes?
+            
+            Optimise reads.
+                especially those in:
+                    c_getVotableEntries
+                    c_getTopVotedEntries
+                    
+                    by:
+                        presorting those tables.
+                        indexing.
+            
+            
+            
+            
+Done TODOs:
+            Done:
+                
+            Writes:
+                Voting: 
+                    c_voteEntity(_entity_id, _direction [up/down]) no result set required.
+                
+            Reads:
+            'Top ten'
+                c_getTopScoredEntities(_offset, _limit)
+                Returns that number, after being ordered by score desc first, then by name desc (for repeatability), to give the top ten in the result set.
+                Resolve category_id
+                
+                'Searching'
+                c_searchEntities(_fragment, _limit)
+                    Similar to the above, ordering by score desc first, then by name desc (for repeatability), then giving only those items which match on _name *or* _blurb LIKE.
+                    (up to a limit of _limit items)
+                    (we may also want to allow them to supply the category name to further limit)
+                Resolve category_id
+            
+            c_getVotableEntities
+                - put in svn.
+                - make sure it can't fail.            
+            
+            
+            
+            
+            
+            

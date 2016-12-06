@@ -1,0 +1,25 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+# Project
+.vs
+packages
+*.suo
+*.csproj.user
+Poco.Core/Poco.Core/bin
+Poco.Core/Poco.Core/obj
+Poco.Importer/Poco.Importer/bin
+Poco.Importer/Poco.Importer/obj
+Poco.Voter\Poco.Voter/bin
+Poco.Voter\Poco.Voter/obj

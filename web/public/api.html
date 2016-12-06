@@ -1,0 +1,76 @@
+<!-- http://code.tutsplus.com/tutorials/organize-your-next-php-project-the-right-way--net-5873 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="scripts/include.js"></script>
+	
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+					
+					BackendClient();
+					
+					var c = new BackendClient();
+					
+					c.getTopScoredEntities(
+						{
+							offset: 0,
+							limit: 10
+						},
+						function(data) { 
+							setData(data, "getTopScoredEntities") 
+							}
+						);
+					
+					c.getVotableEntities(
+						{},
+						function(data) { 
+							setData(data, "getVotableEntities") 
+							}
+						);
+					
+					c.searchEntities(
+						{
+							fragment: "martin s",
+							search_mode: 0,
+							offset: 0,
+							limit: 0
+						},
+						function(data) { 
+							setData(data, "searchEntities") 
+							}
+						);
+					
+					c.voteEntity(
+						{
+							id: 10093,
+							direction: 1
+						},
+						function(data) { 
+							setData(data, "voteEntity") 
+							}
+						);
+				});
+				
+				function setData(data, id)
+				{
+					$("#" + id).text(
+						id +
+						JSON.stringify(data)
+						);
+				}
+	
+	</script>
+	
+</head>
+<body>
+	
+	<p>Hello boo</p>
+	
+	<div id="getTopScoredEntities"></div>
+	<div id="getVotableEntities"></div>
+	<div id="searchEntities"></div>
+	<div id="voteEntity"></div>
+	
+</body>
+</html>
