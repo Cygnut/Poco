@@ -2,8 +2,7 @@
     try
     {
         require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
-        
-        // http://stackoverflow.com/questions/18866571/receive-json-post-with-php
+                
         $data = json_decode(file_get_contents('php://input'), true);
         
         $id = (int) $data["id"];
