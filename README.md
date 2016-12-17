@@ -36,4 +36,11 @@ Search for all entities that match a fragment of text.
 | --------- | ---- | ----------- |
 | - | Body | A JSON vote blob. |
 
-Vote on a particular entity. The blob is of the following format: { id, direction }.
+Vote on a particular entity. The blob is of the following format: 
+```json
+{ 
+  "id": "abc-123", 
+  "direction": "1"
+}
+```
+Where 'id' is the entity id, and 'direction' is 1 for upvote, -1 for downvote.
