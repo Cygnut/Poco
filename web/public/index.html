@@ -1,58 +1,44 @@
-<!--
-    TODO: 
-        Finish up interactions with vote controller.
-        Do something about, when vote is made, then model picks two more votable items.
-        Consider getting rid of BackendClient.js if redundant?
-        Fix inline-block css with vote-items.
-        Fix up css.
-        Handle errors in controllers.
-        
-        
-        
-        
-        Blurb - i think we may need to reverse escape some of the e.g. blurb data somewhere?
-            May be json encoding, or mysql?
-        
-        Vote section:
-            Fit blurb into card.
-            Make cards look good.
-        
-        Scoreboard section:
-            Keep the sizing and formatting of the table fixed so the < & > buttons don't move around.
-            
--->
 <!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="scripts/include.js"></script>
 <style>
-#body {
-    /* Stop the main body of the site from resizing stupidly when the browser has low width. */
-    min-width: 700px;
+p, h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana, Geneva, sans-serif
 }
 
-.section {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    
-    border: 3px solid purple;
+article {
+	/* Stop the main article of the site from resizing stupidly when the browser has low width. */
+	min-width: 700px;
+}
+
+.card-border {
+	box-shadow: 8px 8px 4px #888888;
+	border: 2px solid black;
+}
+
+section {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .vote-item {
-    position: relative;
-    
-    /* http://www.w3schools.com/css/css_inline-block.asp */
-    display: inline-block;
-    vertical-align: middle;
-    
-    width: 45%;
-    margin: 1%;
-    padding: 1% 1% 1% 1%;
-    height: 400px;
-    
-    border: 3px solid blue;
+	position: relative;
+	
+	display: inline-block;
+	vertical-align: middle;
+	
+	width: 45%;
+	margin: 1%;
+	padding: 1% 1% 1% 1%;
+	height: 500px;
+	
+	box-shadow: 8px 8px 4px #888888;
+	border: 2px solid black;
+	
+	overflow: scroll;
 }
 
 .vote-item-img {
@@ -65,20 +51,7 @@
 }
 
 .vote-item-button {
-    /* 
-        Required to make the vote button stay at the bottom of the containing div.
-        Also requires the parent div to have position: relative;
-        
-        Consider using a table to achieve the same effect?
-    */
-    position: absolute;
-    bottom: 0;
-    
-    /* Give the button some space at the bottom. */
-    padding-bottom: 2%;
-    
-    /* Centre the button horizontally. */
-    left: 50%;
+	text-align: center;
 }
 
 h3.scoreTitle {
@@ -91,11 +64,11 @@ table.entityTable {
     border-collapse: collapse;
 }
 
-td.entityTable {
+table.entityTable td {
     text-align: center;
 }
 
-tr.entityTable:nth-child(even) {
+table.entityTable tr:nth-child(even) {
     background-color: lightblue;
 }
 
@@ -120,143 +93,125 @@ h3.searchTitle {
     margin-bottom: 20px;
 }
 
-#header {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
-    border: 3px solid red;
+header {
+	background-color: lightblue;
+	left:0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top:0px;
+	padding: 0.01em 16px;
+	box-shadow: 0px 4px 4px #888888;
 }
 
-#attributions {
-    margin-top: 20px;
-    margin-bottom:20px;
-    padding: 1% 1% 1% 1%;
-    height: 300px;
-    
-    border: 3px solid green;
-}
-
-#links {
-    margin-top: 20px;
-    margin-bottom:20px;
-    margin-left: 40%;
-    margin-right: 40%;
-    padding: 1% 1% 1% 1%;
-    height: 300px;
-    
-    text-align: center;
-    
-    border: 3px solid green;
-}
-
-#footer {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 50px;
-    
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    
-    border: 3px solid yellow;
+footer {
+	background-color: lightblue;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	left: 0px;
+	bottom:0px;
+	padding:0.01em 16px;
+	box-shadow: 10px 10px 5px 5px #888888;
 }
 </style>
+	
+	<title>Poco - A popularity content on a heterogeneous database of media.</title>
+	
+	<meta charset="UTF-8">
+	<meta name="description" content="Popularity contest on a heterogeneous database of media entities.">
+	<meta name="keywords" content="Film, TV, Music, Food">
+	<meta name="author" content="Cygnut">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 </head>
 <body ng-app="poco">
-    
-    <div id="header">Header</div>
-    
-    <div id="body">
-        
-        <!-- Voting section -->
-        <div ng-controller="vote" class="section">
-            <div ng-repeat="e in votableEntities" class="vote-item">
-                <!-- Card layout: -->
-                
-                <!-- <p>{{ e.id }}</p> -->
-                
-                <p>{{ e.category }}</p>
-                
-                <p>{{ e.name }}</p>
-                
-                <img class="vote-item-img" ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}"/>
-                
-                <div>{{ e.blurb }}</div>
-                
-                <p>{{ e.score }}</p>
-                
-                <div class="vote-item-button">
-                    <button type="button" ng-click="onVoteUp(e.id)">Vote</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scoreboard section -->
-        <div ng-controller="scoreboard" class="section">
-            <h3 class="scoreTitle">Rankings</h3>
-            <table class="entityTable">
-                <tr class="entityTable">
-                    <th class="entityTable">Rank</th>
-                    <th class="entityTable">Category</th>
-                    <th class="entityTable">Name</th> 
-                    <th class="entityTable">Score</th>
-                </tr>
-                <tr ng-repeat="i in items" class="entityTable">
-                    <td class="entityTable">{{ i.rank }}</td>
-                    <td class="entityTable">{{ i.category }}</td>
-                    <td class="entityTable">{{ i.name }}</td>
-                    <td class="entityTable">{{ i.score }}</td>
-                </tr>
-            </table>
-            <div class="scoreButtons">
-                <span><button type="button" ng-click="onMoveUp()">&lt;</button></span>
-                <span><button type="button" ng-click="onMoveDown()">&gt;</button></span>
-            </div>            
-        </div>
-        
-        
-        
-        <!-- Search section -->
-        <div ng-controller="search" class="section">
-            <div>
-                <h3 class="searchTitle">Search</h3>
-                <!-- 
-                    Search controls
-                    See http://www.w3schools.com/angular/angular_forms.asp
-                -->
-                <form novalidate class="searchForm">
-                    <input type="text" ng-model="fragment"><br>
-                    <button ng-click="runQuery()">Search</button>
-                </form>
-                
-                <table class="entityTable">
-                    <tr class="entityTable">
-                        <th class="entityTable">Category</th>
-                        <th class="entityTable">Name</th> 
-                        <th class="entityTable">Score</th>
-                    </tr>
-                    <tr ng-repeat="i in items" class="entityTable">
-                        <td class="entityTable">{{ i.category }}</td>
-                        <td class="entityTable">{{ i.name }}</td>
-                        <td class="entityTable">{{ i.score }}</td>
-                    </tr>
-                </table>
-                
-            </div>
-        </div>
-        
-        
-        
-        
-        
-        <div id="links">Links</div>
-        
-        <div id="attributions">Attributions</div>
-    </div>
-    
-    <div id="footer">Footer</div>
-    
+	
+	<header><h1>Poco - It's a Popularity Contest!</h1></header>
+	
+	<br/><br/><br/>
+	
+	<article>
+		
+		<!-- Voting section -->
+		<section ng-controller="vote" id="vote">
+			<div ng-repeat="e in votableEntities" class="vote-item">
+				<!-- Card layout: -->
+				<div>
+					<!-- <p>{{ e.id }}</p> -->
+					<h2>{{ e.category }}</h2>
+					<h3>{{ e.name }}</h3>
+					<img class="vote-item-img" ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}"/>
+					<br/>
+					<div>{{ e.blurb }}</div>
+					<p>{{ e.score }}</p>
+				</div>
+				<div class="vote-item-button">
+					<button type="button" ng-click="onVoteUp(e.id)">Vote</button>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Scoreboard section -->
+		<section ng-controller="scoreboard" class="card-border" id="scoreboard">
+			<h3 class="scoreTitle">Rankings</h3>
+			<table class="entityTable">
+				<tr>
+					<th>Rank</th>
+					<th>Category</th>
+					<th>Name</th> 
+					<th>Score</th>
+				</tr>
+				<tr ng-repeat="i in items">
+					<td>{{ i.rank }}</td>
+					<td>{{ i.category }}</td>
+					<td>{{ i.name }}</td>
+					<td>{{ i.score }}</td>
+				</tr>
+			</table>
+			<div class="scoreButtons">
+				<span><button type="button" ng-click="onMoveUp()">&lt;</button></span>
+				<span><button type="button" ng-click="onMoveDown()">&gt;</button></span>
+			</div>
+		</section>
+		
+		
+		
+		<!-- Search section -->
+		<section ng-controller="search" class="card-border" id="search">
+			<div>
+				<h3 class="searchTitle">Search</h3>
+				<form novalidate class="searchForm">
+					<input type="text" ng-model="fragment">
+					<button ng-click="runQuery()">Search</button>
+				</form>
+				
+				<table class="entityTable">
+					<tr>
+						<th>Category</th>
+						<th>Name</th> 
+						<th>Score</th>
+					</tr>
+					<tr ng-repeat="i in items">
+						<td>{{ i.category }}</td>
+						<td>{{ i.name }}</td>
+						<td>{{ i.score }}</td>
+					</tr>
+				</table>
+				
+			</div>
+		</section>
+		
+		<!--
+			To be added
+		<section id="links" class="card-border">Links</section>
+		<section id="attributions" class="card-border">Attributions</section>
+		-->
+		
+	</article>
+	
+	<footer><h3></h3></footer>
+	
 </body>
 </html>

@@ -3,9 +3,7 @@ function include(file)
     document.write("<script type='text/javascript' src='" + file + "'></script>");
 }
 
-//include('http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js');
-include('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js');
-
+include('vendor/angular.min-1.5.7.js');
 
 include('scripts/BackendClient.js');
 
