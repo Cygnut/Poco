@@ -33,7 +33,7 @@ namespace Poco.Core.DB
 
         string FormatValue(string name, string value, MySqlParameterCollection args)
         {
-            var v = MySqlHelper.EscapeString(value ?? string.Empty);
+            var v = value ?? string.Empty;
 
             int maxLength = args[name].Size;
 
