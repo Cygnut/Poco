@@ -40,3 +40,20 @@ CREATE TABLE `entity_score` (
   PRIMARY KEY (`entity_id`),
   CONSTRAINT `entity_entity_id` FOREIGN KEY (`entity_id`) REFERENCES `entity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `entity_scoreboard` (
+  `scoreboard_category_id` int(11) DEFAULT NULL,
+  `entity_id` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  `total_votes` int(11) NOT NULL,
+  KEY `entity_scoreboard_entity_idx` (`entity_id`),
+  KEY `entity_scoreboard_entity_category_idx` (`scoreboard_category_id`),
+  KEY `entity_scoreboard_idx` (`scoreboard_category_id`),
+  CONSTRAINT `entity_scoreboard_entity` FOREIGN KEY (`entity_id`) REFERENCES `entity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `entity_scoreboard_entity_category` FOREIGN KEY (`scoreboard_category_id`) REFERENCES `entity_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `entity_scoreboard_info` (
+  `when_updated` datetime NOT NULL,
+  `size` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

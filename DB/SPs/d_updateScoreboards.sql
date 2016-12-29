@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS `d_updateScoreboards`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `d_updateScoreboards`()
 BEGIN
 	
-    declare scoreboard_size integer default 10;
+    declare scoreboard_size integer default 100;
 
     declare category_id int;
     
@@ -27,16 +27,17 @@ BEGIN
         insert into entity_scoreboard (
             scoreboard_category_id,
             entity_id,
-            score
+            score,
+			total_votes
         ) 
         select 
             null, 
             e.id, 
-            s.score
+            s.score,
+			s.total_votes
         from entity e
-        inner join entity_score s
-        on e.id = s.entity_id
-        order by s.score desc
+        inner join entity_score s on e.id = s.entity_id
+        order by s.score desc, e.name desc
         limit 0, scoreboard_size;
         
         # Populate the per-category scoreboards.
@@ -54,17 +55,19 @@ BEGIN
             insert into entity_scoreboard (
                 scoreboard_category_id,
                 entity_id,
-                score
+                score,
+				total_votes
             ) 
             select 
                 e.category_id, 
                 e.id, 
-                s.score
+                s.score,
+				s.total_votes
             from entity e
             inner join entity_score s
             on e.id = s.entity_id
             where e.category_id = category_id
-            order by s.score desc
+            order by s.score desc, e.name desc
             limit 0, scoreboard_size;
             
         end loop;
@@ -73,10 +76,12 @@ BEGIN
         
         # Update metadata table.
         insert into entity_scoreboard_info (
-            when_updated
+            when_updated,
+			size
         ) 
         select 
-            now();
+            now(),
+			scoreboard_size;
         
     commit;
     

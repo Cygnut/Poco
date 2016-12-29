@@ -1,19 +1,29 @@
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `c_getTopScoredEntities`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `c_getTopScoredEntities`(
+	in _category int,
 	in _offset int, 
-    in _limit int
-    )
+	in _limit int
+	)
 BEGIN
-	select 
-		e.*, 
-        ec.name as category,
-		es.score as score,
-		es.total_votes as total_votes
-    from entity e
-    inner join entity_category ec on e.category_id = ec.id
-	inner join entity_score es on e.id = es.entity_id
-    order by es.score desc, e.name desc
-    limit _offset, _limit;
+	
+	/*
+		Don't need to order the scoreboard as it's already in the right order.
+	*/
+	
+	select
+		e.*,
+		ec.name as category,
+		esb.score as score,
+		esb.total_votes as total_votes
+	from
+		entity_scoreboard esb
+		inner join entity e on e.id = esb.entity_id
+		inner join entity_category ec on ec.id = e.category_id
+	where
+		(_category is null and esb.scoreboard_category_id is null) or
+		(_category is not null and _category = esb.scoreboard_category_id)
+	limit _offset, _limit;
+	
 END$$
 DELIMITER ;
