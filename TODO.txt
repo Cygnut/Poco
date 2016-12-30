@@ -1,7 +1,16 @@
 TODOs:
     
     Main issues:
-    
+		
+		Also insert bottom of scoreboard. ? Maybe just have everything? But then you'd have to have a table the size of entity * 2... I don't like it. Because the query has a select statement. Look into row number.
+		Use the changed query sp
+		commit.
+		
+		
+		
+		
+		
+		
         Website:
             Need to attribute sources and make sure we aren't breaking any contractual agreements.
             DDoS
