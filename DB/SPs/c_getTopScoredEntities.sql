@@ -24,7 +24,8 @@ BEGIN
             (_category is not null and _category = esb.scoreboard_category_id)
         )
         and
-        ranking between _offset and _offset+_limit-1;
-	
+        ranking between _offset and _offset+_limit-1
+	order by ranking;
+    
 END$$
 DELIMITER ;

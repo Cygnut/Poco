@@ -23,17 +23,16 @@
 		// Invoke query:
 		$conn = new MySqlClient($config["db"]);
 		$rows = $conn->executeQuery(
-			"CALL c_getTopScoredEntities(@_offset := $offset, @_limit := $limit);"
+			"CALL c_getTopScoredEntities(@_category := null, @_offset := $offset, @_limit := $limit);"
 			);
 		
 		// Return output:
 		$items = array();
 		
-		$rank = $offset + 1;	// Rank is 1-based.
 		foreach ($rows as $row)
 		{
 			$items[] = array(
-				"rank" => $rank,
+				"rank" => $row["ranking"],
 				"id" => $row["id"],
 				"name" => $row["name"],
 				"category" => $row["category"],
