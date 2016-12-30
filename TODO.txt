@@ -7,6 +7,7 @@ TODOs:
 		Handle rankings on ui going too far that data disappears.
 		Be able to skip to end (bottom of ranking).
 		
+		Fixed width, height table for rankings + fixed cell sizes etc.
 		
 		
 		

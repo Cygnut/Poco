@@ -64,12 +64,10 @@ BEGIN
         
         # Update metadata table.
         insert into entity_scoreboard_info (
-            when_updated,
-			size
+            when_updated
         ) 
         select 
-            now(),
-			0;
+            now();
         
     commit;
     

@@ -41,6 +41,7 @@ CREATE TABLE `entity_score` (
   CONSTRAINT `entity_entity_id` FOREIGN KEY (`entity_id`) REFERENCES `entity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `entity_scoreboard`;
 CREATE TABLE `entity_scoreboard` (
   `scoreboard_category_id` int(11) DEFAULT NULL,
   `ranking` int(11) NOT NULL,
@@ -54,7 +55,22 @@ CREATE TABLE `entity_scoreboard` (
   CONSTRAINT `entity_scoreboard_entity_category` FOREIGN KEY (`scoreboard_category_id`) REFERENCES `entity_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `entity_scoreboard_info`;
 CREATE TABLE `entity_scoreboard_info` (
-  `when_updated` datetime NOT NULL,
-  `size` int(11) NOT NULL
+  `when_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `entity_vote_selection`;
+CREATE TABLE `entity_vote_selection` (
+  `first_entity_id` int(11) NOT NULL,
+  `second_entity_id` int(11) NOT NULL,
+  PRIMARY KEY (`first_entity_id`),
+  KEY `entity_vote_selection_entity_second_entity_id_idx` (`second_entity_id`),
+  CONSTRAINT `entity_vote_selection_entity_first_entity_id` FOREIGN KEY (`first_entity_id`) REFERENCES `entity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `entity_vote_selection_entity_second_entity_id` FOREIGN KEY (`second_entity_id`) REFERENCES `entity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `entity_vote_selection_info`;
+CREATE TABLE `entity_vote_selection_info` (
+  `when_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
