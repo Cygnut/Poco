@@ -3,7 +3,6 @@ DROP PROCEDURE IF EXISTS `d_updateScoreboards`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `d_updateScoreboards`()
 BEGIN
 	
-    declare scoreboard_size int default 100;
     declare category_id int;
     
     declare done int;
@@ -19,11 +18,6 @@ BEGIN
         # Reset tables.
         delete from entity_scoreboard;
         delete from entity_scoreboard_info;
-        
-        # Get the scoreboard size:
-        select cast(value as unsigned) from configuration
-        where namespace = 'DB' and name = 'ScoreboardSize'
-        into scoreboard_size;
         
         # Populate the per-category scoreboards (the global one has category_id = null).
         open category_cursor;
@@ -62,7 +56,6 @@ BEGIN
 				inner join entity_score s on e.id = s.entity_id
 				where (category_id is null) or (category_id is not null and category_id = e.category_id)
 				order by s.score desc, e.name desc
-				limit 0, scoreboard_size
 			) sub;
             
         end loop;
@@ -76,7 +69,7 @@ BEGIN
         ) 
         select 
             now(),
-			scoreboard_size;
+			0;
         
     commit;
     
