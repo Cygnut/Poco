@@ -138,7 +138,9 @@ footer {
 					<div class="entity-footer">
 						<!--<p class="entity-category">{{ e.category }}</p>-->
 						<img ng-src="{{ e.category_img || 'img/content/alt_entity_image.png' }}" alt="{{ e.category }}" height="24" width="24"/>
-						<strong class="entity-score">{{ e.score }}</strong>
+						<span class="entity-score-container">
+							<strong class="entity-score">{{ e.score }}</strong>
+						</span>
 					</div>
 				</div>
 				<!--

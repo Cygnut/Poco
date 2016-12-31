@@ -14,6 +14,7 @@
 	border: 2px solid black;
 	
 	box-shadow: 8px 8px 4px #888888;
+	border-radius: 10px;
 }
 
 .entity-title {
@@ -82,8 +83,17 @@
 	float: left;
 }
 
+.entity-score-container {
+	float:right;
+	
+	border: solid;
+	border-radius: 25px 25px 25px 25px;
+}
+
 .entity-score {
-	float: right;
+	/*float: right;*/
+	/*
 	margin:0;	/* Ensure vertically centred - webkit introduces weird text margins o/w */
 	padding: 5px;
+	*/
 }
