@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="scripts/include.js"></script>
+<script type="text/javascript" src="scripts/include.js"/></script>
+<link rel="stylesheet" type="text/css" href="css/entity.css"/>
 <style>
 p, h1, h2, h3, h4, h5, h6 {
 	font-family: Verdana, Geneva, sans-serif
@@ -24,44 +25,6 @@ section {
 	margin-bottom: 40px;
 }
 
-.vote-item {
-	position: relative;
-	
-	display: inline-block;
-	vertical-align: middle;
-	
-	text-align: center;
-	
-	width: 45%;
-	margin: 1%;
-	padding: 1% 1% 1% 1%;
-	height: 500px;
-	
-	box-shadow: 8px 8px 4px #888888;
-	border: 2px solid black;
-	
-	overflow: auto;
-}
-
-.vote-item-img {
-	width: 128px;
-	height: 128px;
-	
-	/* Centre image */
-	display: block;
-	margin: auto;
-}
-
-.vote-item-button {
-	/* Centre horizontally */
-	text-align: center;
-}
-
-.vote-item-button button {
-	display: block;
-	width: 100%;
-}
-
 h3.scoreTitle {
 	text-align: center;
 }
@@ -82,23 +45,23 @@ table.entityTable tr:nth-child(even) {
 
 /* The following two are to spread out the buttons evenly horizontally. */
 div.scoreButtons {
-    display: table;
-    width: 100%;
-    table-layout: fixed;    /* For cells of equal size */
+	display: table;
+	width: 100%;
+	table-layout: fixed;    /* For cells of equal size */
 }
 
 div.scoreButtons span {
-    display: table-cell;
-    text-align: center;
+	display: table-cell;
+	text-align: center;
 }
 
 h3.searchTitle {
-    text-align: center;
+	text-align: center;
 }
 
 .searchForm {
-    margin-left: 10px;
-    margin-bottom: 20px;
+	margin-left: 10px;
+	margin-bottom: 20px;
 }
 
 header {
@@ -155,21 +118,30 @@ footer {
 	<article>
 		
 		<!-- Voting section -->
-		<section ng-controller="vote" id="vote">
-			<div ng-repeat="e in votableEntities" class="vote-item">
+		<section ng-controller="vote" id="vote" class="entity-container">
+			<div ng-repeat="e in votableEntities" class="entity">
 				<!-- Card layout: -->
 				<div>
 					<!-- <p>{{ e.id }}</p> -->
-					<h2>{{ e.category }}</h2>
-					<h3>{{ e.name }}</h3>
-					<img class="vote-item-img" ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}"/>
-					<br/>
-					<div>{{ e.blurb }}</div>
-					<p>{{ e.score }}</p>
+					<div class="entity-title">
+						<strong>{{ e.name }}</strong>
+					</div>
+					<div class="entity-img-container">
+						<img ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}"/>
+					</div>
+					<div class="entity-blurb">
+						{{ e.blurb }}
+					</div>
+					<div class="entity-footer">
+						<p class="entity-category">{{ e.category }}</p>
+						<p class="entity-score">{{ e.score }}</p>
+					</div>
 				</div>
-				<div class="vote-item-button">
+				<!--
+				<div class="entity-button">
 					<button type="button" ng-click="onVoteUp(e.id)">Vote</button>
 				</div>
+				-->
 			</div>
 		</section>
 		
