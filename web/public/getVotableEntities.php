@@ -21,7 +21,8 @@
 				"sub_category" => $row["sub_category"],
 				"blurb" => $row["blurb"],
 				"image_url" => $row["image_url"],
-				"score" => $row["score"]
+				"score" => $row["score"],
+				"category_img" => "img/content/entity_category_" . $row["category"] . ".png"
 			);
 			++$rank;
 		}

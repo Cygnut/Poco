@@ -4,9 +4,11 @@
 <script type="text/javascript" src="scripts/include.js"/></script>
 <link rel="stylesheet" type="text/css" href="css/entity.css"/>
 <style>
-p, h1, h2, h3, h4, h5, h6 {
-	font-family: Verdana, Geneva, sans-serif
+body
+{
+	font-family: Verdana, Geneva, sans-serif;
 }
+
 
 article {
 	/* Stop the main article of the site from resizing stupidly when the browser has low width. */
@@ -127,13 +129,14 @@ footer {
 						<strong>{{ e.name }}</strong>
 					</div>
 					<div class="entity-img-container">
-						<img ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}"/>
+						<img ng-src="{{ e.image_url || 'img/content/alt_entity_image.png' }}" alt="{{ e.name }}" height="128" width="128"/>
 					</div>
 					<div class="entity-blurb">
 						{{ e.blurb }}
 					</div>
 					<div class="entity-footer">
-						<p class="entity-category">{{ e.category }}</p>
+						<!--<p class="entity-category">{{ e.category }}</p>-->
+						<img ng-src="{{ e.category_img || 'img/content/alt_entity_image.png' }}" alt="{{ e.category }}" height="24" width="24"/>
 						<p class="entity-score">{{ e.score }}</p>
 					</div>
 				</div>

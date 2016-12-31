@@ -55,9 +55,6 @@
 }
 
 .entity-img-container img {
-	width: 128px;
-	height: 128px;
-	
 	/* Horizontally and vertically centre */
 	position: absolute;
 	margin:auto;
@@ -77,7 +74,8 @@
 }
 
 .entity-footer {
-	
+	height:24px;
+	margin:5px;
 }
 
 .entity-category {
@@ -86,4 +84,6 @@
 
 .entity-score {
 	float: right;
+	margin:0;	/* Ensure vertically centred - webkit introduces weird text margins o/w */
+	padding: 5px;
 }
