@@ -6,7 +6,8 @@
 <style>
 body
 {
-	font-family: Verdana, Geneva, sans-serif;
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: Georgia, serif;
 }
 
 
@@ -137,7 +138,7 @@ footer {
 					<div class="entity-footer">
 						<!--<p class="entity-category">{{ e.category }}</p>-->
 						<img ng-src="{{ e.category_img || 'img/content/alt_entity_image.png' }}" alt="{{ e.category }}" height="24" width="24"/>
-						<p class="entity-score">{{ e.score }}</p>
+						<strong class="entity-score">{{ e.score }}</strong>
 					</div>
 				</div>
 				<!--
