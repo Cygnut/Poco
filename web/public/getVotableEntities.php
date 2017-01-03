@@ -22,7 +22,8 @@
 				"blurb" => $row["blurb"],
 				"image_url" => $row["image_url"],
 				"score" => $row["score"],
-				"category_img" => "img/content/entity_category_" . $row["category"] . ".png"
+				"category_img" => "img/content/entity_category_" . $row["category"] . ".png",
+				"category_background_img" => "img/content/entity_category_background_" . $row["category"] . ".png"
 			);
 			++$rank;
 		}

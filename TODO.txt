@@ -12,9 +12,6 @@ TODOs:
 		Use cards for rankings?
 		Use cards for search?
 		
-		Use icon for Category on cards.
-		Colour cards based on category.
-		
 		DON'T TRUNCATE BLURB IN DATABASE (MAY HAVE TO INCREASE FIELD LENGTH)
 		
 		

@@ -15,6 +15,9 @@
 	
 	box-shadow: 8px 8px 4px #888888;
 	border-radius: 10px;
+	
+	/* Background */
+	background-repeat: repeat;
 }
 
 .entity-title {
@@ -24,6 +27,7 @@
 	
 	border: solid;
 	border-radius: 25px 5px 5px 25px;
+	box-shadow: 1px 1px 1px black;
 	
 	text-align: center;
 	
@@ -31,6 +35,9 @@
 	
 	/* Used to centre text both ways. */
 	display: table;
+	
+	background-image: url("../img/content/entity_text.png");
+	background-repeat: repeat;
 }
 
 .entity-title strong {
@@ -48,6 +55,7 @@
 	
 	border: solid;
 	border-radius: 5px 25px 25px 5px;
+	box-shadow: 1px 1px 1px black;
 	
 	background: black;
 	
@@ -70,8 +78,14 @@
 	
 	border: solid;
 	border-radius: 25px 5px 5px 25px;
+	box-shadow: 1px 1px 1px black;
 	
 	overflow: auto;
+	
+	/* Background */
+	background-image: url("../img/content/entity_text.png");
+	background-repeat: repeat;
+
 }
 
 .entity-footer {
@@ -87,13 +101,16 @@
 	float:right;
 	
 	border: solid;
+	border-color: white;
 	border-radius: 25px 25px 25px 25px;
+	
+	background: black;
 }
 
 .entity-score {
 	/*float: right;*/
-	/*
+	
 	margin:0;	/* Ensure vertically centred - webkit introduces weird text margins o/w */
-	padding: 5px;
-	*/
+	padding: 7px;
+	color: white;
 }

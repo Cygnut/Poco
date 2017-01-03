@@ -122,7 +122,7 @@ footer {
 		
 		<!-- Voting section -->
 		<section ng-controller="vote" id="vote" class="entity-container">
-			<div ng-repeat="e in votableEntities" class="entity">
+			<div style="background-image: url({{e.category_background_img}});" ng-repeat="e in votableEntities" class="entity">
 				<!-- Card layout: -->
 				<div>
 					<!-- <p>{{ e.id }}</p> -->
