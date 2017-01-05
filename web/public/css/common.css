@@ -1,0 +1,62 @@
+body
+{
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: Georgia, serif;
+}
+
+article {
+	/* Stop the main article of the site from resizing stupidly when the browser has low width. */
+	min-width: 700px;
+}
+
+section {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+header {
+	background-color: lightblue;
+	left:0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top:0px;
+	padding: 0.01em 16px;
+	box-shadow: 0px 4px 4px #888888;
+}
+
+header img {
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+footer {
+	background-color: lightblue;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	left: 0px;
+	bottom:0px;
+	padding:0.01em 16px;
+	box-shadow: 10px 10px 5px 5px #888888;
+}
+
+/* Scoreboard & Search */
+
+table.entityTable {
+	width: 100%;
+	/* Remove the spaces between horizontally adjacent cells. */
+	border-collapse: collapse;
+}
+
+table.entityTable td {
+	text-align: center;
+}
+
+table.entityTable tr:nth-child(even) {
+	background-color: lightblue;
+}

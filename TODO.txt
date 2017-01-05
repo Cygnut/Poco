@@ -14,7 +14,23 @@ TODOs:
 		
 		DON'T TRUNCATE BLURB IN DATABASE (MAY HAVE TO INCREASE FIELD LENGTH)
 		
-		
+		Roadmap:
+			Split into 3 separate pages:
+				Vote			- Converted.
+				Scoreboard		- Converted.
+				Search			- Converted.
+				
+				Commit.
+				
+				Correct sql non-inject code.
+			
+			Add links from home:
+				Search
+				Top 10 overall
+				Top 10 film, tv etc
+			
+			
+			Change Vote to Hearthstone-esque voting i/f.
 		
 		
         Website:
