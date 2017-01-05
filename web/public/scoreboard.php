@@ -59,13 +59,13 @@ div.scoreButtons span {
 				</tr>
 				
 				<?php 
-					require_once(realpath(dirname(__FILE__) . "./getTopScoredEntities.php")); 
+					require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
 					
 					$DEFAULT_LIMIT = 10;
 					
 					$offset = getNonNegativeInt($_GET["offset"], 0);
 					$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
-					$items = getTopScoredEntities($offset, $limit);
+					$items = (new PocoDbClient())->getTopScoredEntities($offset, $limit);
 					
 					foreach ($items as $item):
 				?>

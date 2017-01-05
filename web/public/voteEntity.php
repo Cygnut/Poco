@@ -11,10 +11,8 @@
 		$direction = (int) $data["direction"];
 		
 		// Invoke query:
-		$conn = new MySqlClient($config["db"]);
-		$rows = $conn->executeQuery(
-			"CALL c_voteEntity(@_id := $id, @_direction := $direction, @_by := 1);"
-			);
+		$conn = new PocoDbClient();
+		$conn->vote($id, $direction);
 		
 		// Return the new score.
 		echo json_encode(

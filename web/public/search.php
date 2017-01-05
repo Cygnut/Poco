@@ -55,7 +55,7 @@ h3.searchTitle {
 					</tr>
 					
 					<?php 
-						require_once(realpath(dirname(__FILE__) . "./searchEntities.php"));
+						require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
 						
 						$DEFAULT_LIMIT = 10;
 						
@@ -63,7 +63,7 @@ h3.searchTitle {
 						$offset = getNonNegativeInt($_GET["offset"], 0);
 						$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
 						
-						$items = searchEntities($fragment, $offset, $limit);
+						$items = (new PocoDbClient())->search($fragment, 0, $offset, $limit);
 						
 						foreach ($items as $item):
 					?>

@@ -29,10 +29,11 @@
 		<section class="entity-container">
 			
 			<?php
-				require_once(realpath(dirname(__FILE__) . "./getVotableEntities.php"));
-				$items = getVotableEntities();
-			
-			foreach ($items as $item): ?>
+				require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
+				$items = (new PocoDbClient())->getVotableEntities();
+				
+				foreach ($items as $item): 
+			?>
 			
 				<div style="background-image: url(<?php echo htmlspecialchars($item["category_background_img"]); ?>);" class="entity">
 					<!-- Card layout: -->
