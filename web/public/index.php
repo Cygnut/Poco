@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="vendor/jquery-3.1.1.min.js"></script>
+<script src="vendor/jquery-ui.min-1.12.1.js"></script>
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <link rel="stylesheet" type="text/css" href="css/entity.css"/>
 <style>
@@ -57,6 +59,11 @@ form {
 	text-align: center;
 }
 
+/* Initially hide entity cards. */
+entity {
+	display: none;
+}
+
 </style>
 	
 	<title>Poco - A popularity content on a heterogeneous database of media.</title>
@@ -70,6 +77,21 @@ form {
 	
 	<link rel="shortcut icon" href="img/content/PocoIcon-64x64-Transparent.png" />
 	
+<script>
+
+$(function() {
+	
+	$(".entity")
+		.hide()
+		.show("drop", { direction: "up" }, 1000);
+	
+});
+
+function onEntityClick() {
+	// TODO: Implement this!
+}
+
+</script>
 </head>
 <body>
 	
@@ -97,7 +119,10 @@ form {
 			foreach ($items as $item): 
 		?>
 		
-			<div style="background-image: url(<?php echo htmlspecialchars($item["category_background_img"]); ?>);" class="entity">
+			<div 
+				style="background-image: url(<?php echo htmlspecialchars($item["category_background_img"]); ?>);" 
+				class="entity" 
+				onclick="onEntityClick(<?php echo $item["id"]; ?>)">
 				<!-- Card layout: -->
 				<div>
 					<!-- <p>{{ e.id }}</p> -->
