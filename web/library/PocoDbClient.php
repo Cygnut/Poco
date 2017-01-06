@@ -101,12 +101,14 @@ class PocoDbClient
 		}
 	}
 	
-	public function getTopScoredEntities($offset, $limit)
+	public function getTopScoredEntities($category, $offset, $limit)
 	{
 		try
 		{
+			$category = empty($category) ? "null" : $category;
+			
 			$rows = $this->client->executeQuery(
-				"CALL c_getTopScoredEntities(@_category := null, @_offset := $offset, @_limit := $limit);"
+				"CALL c_getTopScoredEntities(@_category := $category, @_offset := $offset, @_limit := $limit);"
 				);
 			
 			// Return output:
@@ -124,6 +126,34 @@ class PocoDbClient
 					"image_url" => $row["image_url"],
 					"score" => $row["score"],
 					"category_img" => "img/content/entity_category_" . $row["category"] . ".png"
+				);
+			}
+			
+			return $items;
+		}
+		catch (Exception $e)
+		{
+			error_log($e->getMessage());
+			return array();
+		}
+	}
+	
+	function getCategories()
+	{
+		try
+		{
+			$rows = $this->client->executeQuery(
+				"CALL c_getCategories();"
+				);
+			
+			// Return output:
+			$items = array();
+			
+			foreach ($rows as $row)
+			{
+				$items[] = array(
+					"id" => $row["id"],
+					"name" => $row["name"]
 				);
 			}
 			

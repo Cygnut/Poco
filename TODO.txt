@@ -19,10 +19,26 @@ TODOs:
 				Vote			- Converted.
 				Scoreboard		- Converted.
 				Search			- Converted.
+			
+			Rework index page:
 				
-				Commit.
+				Animation for cards.
+				Allow vote on cards.
+				Use gif background for cards.
+				Change page layout to inset page.
+				Style index page.
+				Change search page to use cards.
+				Change scoreboard page to use cards.
 				
-				Correct sql non-inject code.
+				
+				
+				
+				
+				
+				
+				
+			
+			Correct sql non-inject code.
 			
 			Add links from home:
 				Search

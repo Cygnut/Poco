@@ -63,9 +63,11 @@ div.scoreButtons span {
 					
 					$DEFAULT_LIMIT = 10;
 					
+					$category = empty($_GET["category"]) ? null : getNonNegativeInt($_GET["category"], 0);
+					echo $category;
 					$offset = getNonNegativeInt($_GET["offset"], 0);
 					$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
-					$items = (new PocoDbClient())->getTopScoredEntities($offset, $limit);
+					$items = (new PocoDbClient())->getTopScoredEntities($category, $offset, $limit);
 					
 					foreach ($items as $item):
 				?>
