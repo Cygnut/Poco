@@ -9,7 +9,7 @@ section {
 	margin: auto;
 }
 
-a,h1,h2,h3 {
+a,p,h1,h2,h3,h4,h5,h6 {
 	text-align: center;
 }
 
@@ -84,6 +84,8 @@ form {
 	
 	<hr/>
 	
+	<br/>
+	
 	<!-- Voting section -->
 	<section class="entity-section">
 		
@@ -128,7 +130,9 @@ form {
 		</div>
 		
 	</section>
-		
+	
+	<br/>
+	
 	<hr/>
 		
 	<section>
@@ -167,11 +171,10 @@ form {
 	
 	<hr/>
 	
-		<!--
-			To be added
-		<section id="attributions">Attributions</section>
-		-->
-		
+	<section>
+		<p>Cygnut @ 2016</p>
+	</section>
+	
 	</article>
 	
 </body>
