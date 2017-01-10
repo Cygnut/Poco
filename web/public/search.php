@@ -5,9 +5,22 @@
 <link rel="stylesheet" type="text/css" href="css/entity.css"/>
 <style>
 
+a,p,h1,h2,h3,h4,h5,h6 {
+	text-align: center;
+}
+
 .search {
+	/*
 	box-shadow: 8px 8px 4px #888888;
 	border: 2px solid black;
+	*/
+}
+
+.entity-table {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .searchTitle {
@@ -35,54 +48,39 @@
 </head>
 <body>
 	
-	<?php include(realpath(dirname(__FILE__) . "./header.html")); ?>
-	
 	<article>
 		
-		<section class="search">
-			<div>
-				<h3 class="searchTitle">Search</h3>
-				<form class="searchForm" action="search.php" method="GET">
-					<input type="text" name="fragment" value="<?php echo htmlspecialchars($_GET["fragment"]); ?>"></input>
-					<input type="submit" value="Search"></input>
-				</form>
-				
-				<table class="entityTable">
-					<tr>
-						<th>Category</th>
-						<th>Name</th> 
-						<th>Score</th>
-					</tr>
-					
-					<?php 
-						require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
-						
-						$DEFAULT_LIMIT = 10;
-						
-						$fragment = $_GET["fragment"];
-						$offset = getNonNegativeInt($_GET["offset"], 0);
-						$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
-						
-						$items = (new PocoDbClient())->search($fragment, 0, $offset, $limit);
-						
-						foreach ($items as $item):
-					?>
-					
-					<tr>
-						<td><?php echo htmlspecialchars($item["category"]); ?></td>
-						<td><?php echo htmlspecialchars($item["name"]); ?></td>
-						<td><?php echo htmlspecialchars($item["score"]); ?></td>
-					</tr>
-					
-					<?php endforeach; ?>
-				</table>
-				
-			</div>
-		</section>
+	<section>
+		<h1>Poco</h1>
+		<hr/>
+		<h2>Search</h2>
+	</section>
 		
-	</article>
+	<section class="search">
+		<div class="entity-table">
+		<?php 
+			require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
+			$twig = getTwigEnvironment();
+			
+			$DEFAULT_LIMIT = 10;
+			
+			$fragment = $_GET["fragment"];
+			$offset = getNonNegativeInt($_GET["offset"], 0);
+			$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
+			
+			$items = (new PocoDbClient())->search($fragment, 0, $offset, $limit);
+			
+			foreach ($items as $item)
+				echo $twig->render('entity.twig', array('entity' => $item));
+		?>
+		</div>
+	</section>
 	
-	<?php include(realpath(dirname(__FILE__) . "./footer.html")); ?>
+	<section>
+		<p>Cygnut @ 2016</p>
+	</section>
+	
+	</article>
 	
 </body>
 </html>

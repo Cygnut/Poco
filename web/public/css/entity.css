@@ -1,9 +1,3 @@
-.entity-container {
-	/* Space out content evenly. */
-	display:flex;
-	justify-content: space-around;
-}
-
 .entity {
 	
 	/* A good looking playing card ratio is 74:53 or just 3:4 - use this ratio. */

@@ -5,9 +5,15 @@
 <link rel="stylesheet" type="text/css" href="css/entity.css"/>
 <style>
 
-.scoreboard {
-	box-shadow: 8px 8px 4px #888888;
-	border: 2px solid black;
+a,p,h1,h2,h3,h4,h5,h6 {
+	text-align: center;
+}
+
+.entity-table {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 h3.scoreTitle {
@@ -42,64 +48,51 @@ div.scoreButtons span {
 </head>
 <body>
 	
-	<?php include(realpath(dirname(__FILE__) . "./header.html")); ?>
-	
 	<article>
-		
-		<!-- Scoreboard section -->
-		
-		<section class="scoreboard" >
-			<h3 class="scoreTitle">Rankings</h3>
-			<table class="entityTable">
-				<tr>
-					<th>Rank</th>
-					<th>Category</th>
-					<th>Name</th> 
-					<th>Score</th>
-				</tr>
-				
-				<?php 
-					require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
-					
-					$DEFAULT_LIMIT = 10;
-					
-					$category = empty($_GET["category"]) ? null : getNonNegativeInt($_GET["category"], 0);
-					$offset = getNonNegativeInt($_GET["offset"], 0);
-					$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
-					$items = (new PocoDbClient())->getTopScoredEntities($category, $offset, $limit);
-					
-					foreach ($items as $item):
-				?>
-				
-				<tr>
-					<td><?php echo htmlspecialchars($item["rank"]); ?></td>
-					<td><?php echo htmlspecialchars($item["category"]); ?></td>
-					<td><?php echo htmlspecialchars($item["name"]); ?></td>
-					<td><?php echo htmlspecialchars($item["score"]); ?></td>
-				</tr>
-				
-				<?php endforeach; ?>
-				
-			</table>
-			<div class="scoreButtons">
-				<?php
-					$url = "/scoreboard.php?";
-					$prevUrl = $url . "offset=" . (($offset - $limit < 0) ? 0 : ($offset - $limit)) . "&limit=" . $limit;
-					$nextUrl = $url . "offset=" . ($offset + $limit) . "&limit=" . $limit;
-				?>
-				
-				<span><a href="<?php echo htmlspecialchars($prevUrl); ?>">&lt;</a></span>
-				<span><a href="<?php echo htmlspecialchars($nextUrl); ?>">&gt;</a></span>
-				<!--
-				<span><form method="POST" action="<?php echo htmlspecialchars($prevUrl); ?>"><input type="submit" value="&lt;" /></form></span>
-				<span><form method="POST" action="<?php echo htmlspecialchars($nextUrl); ?>"><input type="submit" value="&gt;" /></form></span>
-				-->
-			</div>
-		</section>
-		
-	</article>
 	
-	<?php include(realpath(dirname(__FILE__) . "./footer.html")); ?>
+	<section>
+		<h1>Poco</h1>
+		<hr/>
+		<h2>Scoreboard</h2>
+	</section>
+	
+	<section class="scoreboard" >
+		<h3 class="scoreTitle">Rankings</h3>
+		
+		<div class="entity-table">
+			<?php 
+				require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
+				$twig = getTwigEnvironment();
+				
+				$DEFAULT_LIMIT = 10;
+				
+				$category = empty($_GET["category"]) ? null : getNonNegativeInt($_GET["category"], 0);
+				$offset = getNonNegativeInt($_GET["offset"], 0);
+				$limit = getNonNegativeInt($_GET["limit"], $DEFAULT_LIMIT);
+				$items = (new PocoDbClient())->getTopScoredEntities($category, $offset, $limit);
+				
+				foreach ($items as $item)
+					echo $twig->render('entity.twig', array('entity' => $item));
+			?>
+		</div>
+		
+		<div class="scoreButtons">
+			<?php
+				$url = "/scoreboard.php?";
+				$prevUrl = $url . "offset=" . (($offset - $limit < 0) ? 0 : ($offset - $limit)) . "&limit=" . $limit;
+				$nextUrl = $url . "offset=" . ($offset + $limit) . "&limit=" . $limit;
+			?>
+			
+			<span><a href="<?php echo htmlspecialchars($prevUrl); ?>">&lt;</a></span>
+			<span><a href="<?php echo htmlspecialchars($nextUrl); ?>">&gt;</a></span>
+		</div>
+	</section>
+	
+	<section>
+		<p>Cygnut @ 2016</p>
+	</section>
+	
+	</article>
 	
 </body>
 </html>

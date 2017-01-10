@@ -99,76 +99,76 @@ $(function() {
 	
 	<article>
 	
-	<section>
-		<h1>Poco</h1>
+		<section>
+			<h1>Poco</h1>
+			<hr/>
+			<h2>It's a popularity contest!</h2>
+		</section>
+		
 		<hr/>
-		<h2>It's a popularity contest!</h2>
-	</section>
-	
-	<hr/>
-	
-	<br/>
-	
-	<!-- Voting section -->
-	<section class="entity-section">
-		
-		<div class="entity-container">
-		<?php
-			require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
-			
-			$twig = getTwigEnvironment();
-			$items = (new PocoDbClient())->getVotableEntities();
-			
-			foreach ($items as $item)
-				echo $twig->render('entity.twig', array('entity' => $item));
-		?>
-		</div>
-		
-	</section>
-	
-	<br/>
-	
-	<hr/>
-		
-	<section>
-		<h3>Scoreboard</h3>
-		
-		<div class="links-container">
-			
-			<ul>
-			<li><a href="/scoreboard.php">All</a></li>
-			<?php
-				$categories = (new PocoDbClient())->getCategories();
-				foreach ($categories as $category):
-			?>
-			<li>
-				<a href="/scoreboard.php?category=<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></a>
-			</li>
-			<?php endforeach; ?>
-			</ul>
-		
-		<div>
-		
-	</section>
-	
-	<hr>
-	
-	<section>
-		<h3>Search</h3>
-		
-		<form class="searchForm" action="search.php" method="GET">
-			<input type="text" name="fragment" value="<?php echo htmlspecialchars($_GET["fragment"]); ?>"></input>
-			<input type="submit" value="Search"></input>
-		</form>
 		
 		<br/>
-	</section>
-	
-	<hr/>
-	
-	<section>
-		<p>Cygnut @ 2016</p>
-	</section>
+		
+		<!-- Voting section -->
+		<section class="entity-section">
+			
+			<div class="entity-container">
+			<?php
+				require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
+				
+				$twig = getTwigEnvironment();
+				$items = (new PocoDbClient())->getVotableEntities();
+				
+				foreach ($items as $item)
+					echo $twig->render('entity.twig', array('entity' => $item));
+			?>
+			</div>
+			
+		</section>
+		
+		<br/>
+		
+		<hr/>
+			
+		<section>
+			<h3>Scoreboard</h3>
+			
+			<div class="links-container">
+				
+				<ul>
+				<li><a href="/scoreboard.php">All</a></li>
+				<?php
+					$categories = (new PocoDbClient())->getCategories();
+					foreach ($categories as $category):
+				?>
+				<li>
+					<a href="/scoreboard.php?category=<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></a>
+				</li>
+				<?php endforeach; ?>
+				</ul>
+			
+			<div>
+			
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h3>Search</h3>
+			
+			<form class="searchForm" action="search.php" method="GET">
+				<input type="text" name="fragment" value="<?php echo htmlspecialchars($_GET["fragment"]); ?>"></input>
+				<input type="submit" value="Search"></input>
+			</form>
+			
+			<br/>
+		</section>
+		
+		<hr/>
+		
+		<section>
+			<p>Cygnut @ 2016</p>
+		</section>
 	
 	</article>
 	

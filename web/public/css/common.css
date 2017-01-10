@@ -1,3 +1,16 @@
+html,body {
+	/* Partial CSS reset */
+	margin: 0; 
+	padding: 0;
+}
+
+article {
+	background-color: white;
+	margin: auto;
+	width: 98%;
+	box-shadow: 0px 0px 5px 5px #5F5F5F;
+}
+
 body
 {
 	/*font-family: Verdana, Geneva, sans-serif;*/
@@ -12,37 +25,8 @@ article {
 section {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	margin-top: 40px;
-	margin-bottom: 40px;
-}
-
-header {
-	background-color: lightblue;
-	left:0px;
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	top:0px;
-	padding: 0.01em 16px;
-	box-shadow: 0px 4px 4px #888888;
-}
-
-header img {
-	margin: 10px;
-	width: 50px;
-	height: 50px;
-	float: left;
-}
-
-footer {
-	background-color: lightblue;
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	left: 0px;
-	bottom:0px;
-	padding:0.01em 16px;
-	box-shadow: 10px 10px 5px 5px #888888;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 /* Scoreboard & Search */
