@@ -1,0 +1,29 @@
+<div 
+	style="background-image: url({{ entity.category_background_img }});" 
+	class="entity" 
+	data-id="{{ entity.id }}"
+	>
+	<div class="entity-title">
+		<strong>{{ entity.name }}</strong>
+	</div>
+	<div class="entity-img-container">
+		<img 
+			src="{{ entity.image_url ?? 'img/content/alt_entity_image.png' }}" 
+			alt="{{ entity.name }}" 
+			height="128" width="128"
+		/>
+	</div>
+	<div class="entity-blurb">
+		{{ entity.blurb }}
+	</div>
+	<div class="entity-footer">
+		<img 
+			src="{{ entity.category_img ?? 'img/content/alt_entity_image.png' }}" 
+			alt="{{ entity.category }}" 
+			height="24" width="24"
+		/>
+		<span class="entity-score-container">
+			<strong>{{ entity.score }}</strong>
+		</span>
+	</div>
+</div>

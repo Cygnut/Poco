@@ -85,17 +85,18 @@ $(function() {
 		.hide()
 		.show("drop", { direction: "up" }, 1000);
 	
+	$(".entity")
+		.click(function() {
+			id = $(this).attr('data-id');
+			// TODO: Handle this!
+		});
+	
 });
-
-function onEntityClick() {
-	// TODO: Implement this!
-}
 
 </script>
 </head>
 <body>
 	
-	<?php //include(realpath(dirname(__FILE__) . "./header.html")); ?>
 	<article>
 	
 	<section>
@@ -114,44 +115,13 @@ function onEntityClick() {
 		<div class="entity-container">
 		<?php
 			require_once(realpath(dirname(__FILE__) . "/../library/include.php"));
+			
+			$twig = getTwigEnvironment();
 			$items = (new PocoDbClient())->getVotableEntities();
 			
-			foreach ($items as $item): 
+			foreach ($items as $item)
+				echo $twig->render('entity.twig', array('entity' => $item));
 		?>
-		
-			<div 
-				style="background-image: url(<?php echo htmlspecialchars($item["category_background_img"]); ?>);" 
-				class="entity" 
-				onclick="onEntityClick(<?php echo $item["id"]; ?>)">
-				<!-- Card layout: -->
-				<div>
-					<!-- <p>{{ e.id }}</p> -->
-					<div class="entity-title">
-						<strong><?php echo htmlspecialchars($item["name"]); ?></strong>
-					</div>
-					<div class="entity-img-container">
-						<img 
-							src="<?php echo htmlspecialchars(empty($item["image_url"]) ? "img/content/alt_entity_image.png" : $item["image_url"]); ?>" 
-							alt="<?php echo htmlspecialchars($item["name"]); ?>" 
-							height="128" width="128"/>
-					</div>
-					<div class="entity-blurb">
-						<?php echo htmlspecialchars($item["blurb"]); ?>
-					</div>
-					<div class="entity-footer">
-						<img 
-							src="<?php echo htmlspecialchars(empty($item["category_img"]) ? "img/content/alt_entity_image.png" : $item["category_img"]); ?>" 
-							alt="<?php echo htmlspecialchars($item["category"]); ?>" 
-							height="24" width="24"/>
-						<span class="entity-score-container">
-							<strong class="entity-score"><?php echo htmlspecialchars($item["score"]); ?></strong>
-						</span>
-					</div>
-				</div>
-			</div>
-		
-		<?php endforeach; ?>
-		
 		</div>
 		
 	</section>
@@ -172,7 +142,7 @@ function onEntityClick() {
 				foreach ($categories as $category):
 			?>
 			<li>
-			<a href="/scoreboard.php?category=<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></a>
+				<a href="/scoreboard.php?category=<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></a>
 			</li>
 			<?php endforeach; ?>
 			</ul>

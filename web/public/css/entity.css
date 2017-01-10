@@ -107,7 +107,7 @@
 	background: black;
 }
 
-.entity-score {
+.entity-score-container strong {
 	/*float: right;*/
 	
 	margin:0;	/* Ensure vertically centred - webkit introduces weird text margins o/w */
