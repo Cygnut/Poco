@@ -10,7 +10,7 @@
 	border: 2px solid black;
 }
 
-h3.searchTitle {
+.searchTitle {
 	text-align: center;
 }
 

@@ -20,23 +20,18 @@ TODOs:
 				Scoreboard		- Converted.
 				Search			- Converted.
 			
-			Rework index page:
+			Rework:
+				
+				Change to using cards on all pages.
+				Then, once all html is done, move to css.
+				
 				
 				Animation for cards.
 				Allow vote on cards.
 				Use gif background for cards.
 				Change page layout to inset page.
 				Style index page.
-				Change search page to use cards.
-				Change scoreboard page to use cards.
-				
-				
-				
-				
-				
-				
-				
-				
+			
 			
 			Correct sql non-inject code.
 			
