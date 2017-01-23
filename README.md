@@ -1,3 +1,4 @@
+![Poco icon](https://github.com/Cygnut/Poco/blob/master/web/public/img/content/PocoIcon-64x64-Transparent.png)
 # Poco
 It's a **Po**ularity **Co**ntest!
 
