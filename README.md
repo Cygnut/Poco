@@ -2,7 +2,7 @@
 # Poco
 It's a **Po**ularity **Co**ntest!
 
-Website and backend tools which allow users to vote on a heterogeneous database of objects based on popularity.
+Website and backend tools which allow users to vote on a heterogeneous database of objects based on popularity. Uses PHP & C#.
 
 # API
 
