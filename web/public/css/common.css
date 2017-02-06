@@ -29,6 +29,10 @@ section {
 	margin-bottom: 0px;
 }
 
+hr {
+	width: 80%;
+}
+
 /* Scoreboard & Search */
 
 table.entityTable {

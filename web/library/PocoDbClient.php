@@ -19,9 +19,7 @@ class PocoDbClient
 	
 	public function vote($id, $direction)
 	{
-		return $this->client->executeQuery(
-			"CALL c_voteEntity(@_id := $id, @_direction := $direction, @_by := 1);"
-			);
+		$this->client->executeSP("c_voteEntity", "ii", [ $id, $direction ]);
 	}
 	
 	function toEntity($row)
@@ -47,13 +45,10 @@ class PocoDbClient
 			// TODO: Limit characters in $fragmentEsc based on the SP parameter length.
 			$fragmentEsc = substr($fragmentEsc, 0, 25);	// For now, just use the first 25.
 			
-			$rows = $this->client->executeQuery(
-				"CALL c_searchEntities(
-					@_fragment := \"$fragmentEsc\", 
-					@_search_mode := $search_mode, 
-					@_offset := $offset, 
-					@_limit := $limit);"
-				);
+			$rows = $this->client->executeSPWithResult(
+				"c_searchEntities", 
+				"siii", 
+				[ $fragmentEsc, $search_mode, $offset, $limit ]);
 			
 			// Return output:
 			$items = array();
@@ -68,7 +63,7 @@ class PocoDbClient
 		catch (Exception $e)
 		{
 			error_log($e->getMessage());
-			return array();
+			return [];
 		}
 	}
 	
@@ -76,9 +71,7 @@ class PocoDbClient
 	{
 		try
 		{
-			$rows = $this->client->executeQuery(
-				"CALL c_getVotableEntities();"
-				);
+			$rows = $this->client->executeSPWithResult("c_getVotableEntities");
 			
 			// Return output:
 			$items = array();
@@ -91,7 +84,7 @@ class PocoDbClient
 		catch (Exception $e)
 		{
 			error_log($e->getMessage());
-			return array();
+			return [];
 		}
 	}
 	
@@ -99,11 +92,12 @@ class PocoDbClient
 	{
 		try
 		{
-			$category = empty($category) ? "null" : $category;
+			$category = empty($category) ? null : $category;
 			
-			$rows = $this->client->executeQuery(
-				"CALL c_getTopScoredEntities(@_category := $category, @_offset := $offset, @_limit := $limit);"
-				);
+			$rows = $this->client->executeSPWithResult(
+				"c_getTopScoredEntities", 
+				"iii", 
+				[ $category, $offset, $limit ]);
 			
 			// Return output:
 			$items = array();
@@ -120,7 +114,7 @@ class PocoDbClient
 		catch (Exception $e)
 		{
 			error_log($e->getMessage());
-			return array();
+			return [];
 		}
 	}
 	
@@ -128,12 +122,10 @@ class PocoDbClient
 	{
 		try
 		{
-			$rows = $this->client->executeQuery(
-				"CALL c_getCategories();"
-				);
+			$rows = $this->client->executeSPWithResult("c_getCategories");
 			
 			// Return output:
-			$items = array();
+			$items = [];
 			
 			foreach ($rows as $row)
 			{
@@ -148,7 +140,7 @@ class PocoDbClient
 		catch (Exception $e)
 		{
 			error_log($e->getMessage());
-			return array();
+			return [];
 		}
 	}
 }

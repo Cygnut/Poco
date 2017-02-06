@@ -22,18 +22,15 @@ TODOs:
 			
 			Rework:
 				
-				Change to using cards on all pages.
 				Then, once all html is done, move to css.
 				
 				
 				Animation for cards.
 				Allow vote on cards.
+				Add numbering for score.
 				Use gif background for cards.
-				Change page layout to inset page.
 				Style index page.
 			
-			
-			Correct sql non-inject code.
 			
 			Add links from home:
 				Search
