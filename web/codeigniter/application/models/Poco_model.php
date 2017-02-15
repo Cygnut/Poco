@@ -39,6 +39,17 @@ class Poco_model extends CI_Model {
 		];
 	}
 	
+	public function getCategoryId($categoryName)
+	{
+		$row = $this->db
+			->get_where(
+				'entity_category', 
+				[ 'name' => $categoryName ])
+			->row_array();
+		
+		return isset($row) ? $row['id'] : null;
+	}
+	
 	public function getCategories()
 	{
 		$rows = $this->db

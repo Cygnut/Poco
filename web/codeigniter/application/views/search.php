@@ -36,6 +36,7 @@ a,p,h1,h2,h3,h4,h5,h6 {
 	<h1>Poco</h1>
 	<hr/>
 	<h2>Search</h2>
+	<hr/>
 </section>
 	
 <section class="search">

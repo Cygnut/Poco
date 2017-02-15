@@ -87,9 +87,8 @@ entity {
 		<h1>Poco</h1>
 		<hr/>
 		<h2>It's a popularity contest!</h2>
+		<hr/>
 	</section>
-	
-	<hr/>
 	
 	<br/>
 	
@@ -115,12 +114,12 @@ entity {
 		<div class="links-container">
 			
 			<ul>
-			<li><a href="/scoreboard">All</a></li>
+			<li><a href="/scoreboard/All">All</a></li>
 			<?php
 				foreach ($categories as $category):
 			?>
 			<li>
-				<a href="/scoreboard/<?php echo $category['id']; ?>"><?php echo $category["name"]; ?></a>
+				<a href="/scoreboard/<?php echo $category['name']; ?>"><?php echo $category["name"]; ?></a>
 			</li>
 			<?php endforeach; ?>
 			</ul>

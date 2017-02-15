@@ -19,13 +19,14 @@ h3.scoreTitle {
 }
 
 /* The following two are to spread out the buttons evenly horizontally. */
-div.scoreButtons {
+div.links {
+	margin-top: 25px;
 	display: table;
 	width: 100%;
 	table-layout: fixed;    /* For cells of equal size */
 }
 
-div.scoreButtons span {
+div.links span {
 	display: table-cell;
 	text-align: center;
 }
@@ -52,10 +53,12 @@ div.scoreButtons span {
 		<h1>Poco</h1>
 		<hr/>
 		<h2>Scoreboard</h2>
+		<hr/>
 	</section>
 	
 	<section class="scoreboard" >
-		<h3 class="scoreTitle">Rankings</h3>
+		<h3 class="scoreTitle">Rankings (<?php echo $filter ?>)</h3>
+		<br/>
 		
 		<div class="entity-table">
 			<?php 
@@ -64,17 +67,8 @@ div.scoreButtons span {
 			?>
 		</div>
 		
-		<div class="scoreButtons">
-			<?php
-				$offset = 0;
-				$limit = 10;
-				$url = "/scoreboard.php?";
-				$prevUrl = $url . "offset=" . (($offset - $limit < 0) ? 0 : ($offset - $limit)) . "&limit=" . $limit;
-				$nextUrl = $url . "offset=" . ($offset + $limit) . "&limit=" . $limit;
-			?>
-			
-			<span><a href="<?php echo htmlspecialchars($prevUrl); ?>">&lt;</a></span>
-			<span><a href="<?php echo htmlspecialchars($nextUrl); ?>">&gt;</a></span>
+		<div class="links">
+			<span><?php echo $links; ?></span>
 		</div>
 	</section>
 	

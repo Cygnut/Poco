@@ -53,6 +53,7 @@ $route['default_controller'] = 'main/index';
 
 $route['search/(:any)'] = 'search/index/$1';
 
+$route['scoreboard/(:any)/(:num)'] = 'scoreboard/index/$1';
 $route['scoreboard/(:any)'] = 'scoreboard/index/$1';
 $route['scoreboard'] = 'scoreboard/index';
 
