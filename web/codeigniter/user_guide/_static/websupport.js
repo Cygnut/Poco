@@ -247,7 +247,7 @@
           .val('')
           .add(form.find('input'))
           .removeAttr('disabled');
-	var ul = $('#cl' + (node_id || parent_id));
+    var ul = $('#cl' + (node_id || parent_id));
         if (ul.data('empty')) {
           $(ul).empty();
           ul.data('empty', false);
@@ -404,7 +404,7 @@
     var classes = link.attr('class').split(/\s+/);
     for (var i=0; i<classes.length; i++) {
       if (classes[i] != 'sort-option') {
-	by = classes[i].substring(2);
+    by = classes[i].substring(2);
       }
     }
     setComparator();

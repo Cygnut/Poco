@@ -1,110 +1,110 @@
 .entity {
-	
-	/* A good looking playing card ratio is 74:53 or just 3:4 - use this ratio. */
-	width: 300px;
-	height: 400px;
-	margin: 1%;
-	padding: 1% 1% 1% 1%;
-	border: 2px solid black;
-	
-	box-shadow: 8px 8px 4px #888888;
-	border-radius: 10px;
-	
-	/* Background */
-	background-repeat: repeat;
+    
+    /* A good looking playing card ratio is 74:53 or just 3:4 - use this ratio. */
+    width: 300px;
+    height: 400px;
+    margin: 1%;
+    padding: 1% 1% 1% 1%;
+    border: 2px solid black;
+    
+    box-shadow: 8px 8px 4px #888888;
+    border-radius: 10px;
+    
+    /* Background */
+    background-repeat: repeat;
 }
 
 .entity-title {
-	height: 50px;
-	width: 96%;		/* Need to set the width when not a block element. */
-	margin: 3px;
-	
-	border: solid;
-	border-radius: 25px 5px 5px 25px;
-	box-shadow: 1px 1px 1px black;
-	
-	text-align: center;
-	
-	overflow: auto;
-	
-	/* Used to centre text both ways. */
-	display: table;
-	
-	background-image: url("../img/content/entity_text.png");
-	background-repeat: repeat;
+    height: 50px;
+    width: 96%;        /* Need to set the width when not a block element. */
+    margin: 3px;
+    
+    border: solid;
+    border-radius: 25px 5px 5px 25px;
+    box-shadow: 1px 1px 1px black;
+    
+    text-align: center;
+    
+    overflow: auto;
+    
+    /* Used to centre text both ways. */
+    display: table;
+    
+    background-image: url("../img/content/entity_text.png");
+    background-repeat: repeat;
 }
 
 .entity-title strong {
-	
-	/* Used to centre text both ways. */
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
+    
+    /* Used to centre text both ways. */
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .entity-img-container {
-	height: 140px;	/* Image Height + 2 * 6px to border the internal image. */
-	width: 96%;
-	margin: 3px;
-	
-	border: solid;
-	border-radius: 5px 25px 25px 5px;
-	box-shadow: 1px 1px 1px black;
-	
-	background: black;
-	
-	/* For centering */
-	position: relative;
+    height: 140px;    /* Image Height + 2 * 6px to border the internal image. */
+    width: 96%;
+    margin: 3px;
+    
+    border: solid;
+    border-radius: 5px 25px 25px 5px;
+    box-shadow: 1px 1px 1px black;
+    
+    background: black;
+    
+    /* For centering */
+    position: relative;
 }
 
 .entity-img-container img {
-	/* Horizontally and vertically centre */
-	position: absolute;
-	margin:auto;
-	top:0; bottom:0; left:0; right:0;
+    /* Horizontally and vertically centre */
+    position: absolute;
+    margin:auto;
+    top:0; bottom:0; left:0; right:0;
 }
 
 .entity-blurb {
-	height: 120px;
-	width: 86%;
-	padding: 5%;
-	margin: 3px;
-	
-	border: solid;
-	border-radius: 25px 5px 5px 25px;
-	box-shadow: 1px 1px 1px black;
-	
-	overflow: auto;
-	
-	/* Background */
-	background-image: url("../img/content/entity_text.png");
-	background-repeat: repeat;
+    height: 120px;
+    width: 86%;
+    padding: 5%;
+    margin: 3px;
+    
+    border: solid;
+    border-radius: 25px 5px 5px 25px;
+    box-shadow: 1px 1px 1px black;
+    
+    overflow: auto;
+    
+    /* Background */
+    background-image: url("../img/content/entity_text.png");
+    background-repeat: repeat;
 
 }
 
 .entity-footer {
-	height:24px;
-	margin:5px;
+    height:24px;
+    margin:5px;
 }
 
 .entity-category {
-	float: left;
+    float: left;
 }
 
 .entity-score-container {
-	float:right;
-	
-	border: solid;
-	border-color: white;
-	border-radius: 25px 25px 25px 25px;
-	
-	background: black;
+    float:right;
+    
+    border: solid;
+    border-color: white;
+    border-radius: 25px 25px 25px 25px;
+    
+    background: black;
 }
 
 .entity-score-container strong {
-	/*float: right;*/
-	
-	margin:0;	/* Ensure vertically centred - webkit introduces weird text margins o/w */
-	padding: 7px;
-	color: white;
+    /*float: right;*/
+    
+    margin:0;    /* Ensure vertically centred - webkit introduces weird text margins o/w */
+    padding: 7px;
+    color: white;
 }

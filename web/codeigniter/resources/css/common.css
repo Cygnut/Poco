@@ -1,50 +1,50 @@
 html,body {
-	/* Partial CSS reset */
-	margin: 0; 
-	padding: 0;
+    /* Partial CSS reset */
+    margin: 0; 
+    padding: 0;
 }
 
 article {
-	background-color: white;
-	margin: auto;
-	width: 98%;
-	box-shadow: 0px 0px 5px 5px #5F5F5F;
+    background-color: white;
+    margin: auto;
+    width: 98%;
+    box-shadow: 0px 0px 5px 5px #5F5F5F;
 }
 
 body
 {
-	/*font-family: Verdana, Geneva, sans-serif;*/
-	font-family: Georgia, serif;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    font-family: Georgia, serif;
 }
 
 article {
-	/* Stop the main article of the site from resizing stupidly when the browser has low width. */
-	min-width: 700px;
+    /* Stop the main article of the site from resizing stupidly when the browser has low width. */
+    min-width: 700px;
 }
 
 section {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 hr {
-	width: 80%;
+    width: 80%;
 }
 
 /* Scoreboard & Search */
 
 table.entityTable {
-	width: 100%;
-	/* Remove the spaces between horizontally adjacent cells. */
-	border-collapse: collapse;
+    width: 100%;
+    /* Remove the spaces between horizontally adjacent cells. */
+    border-collapse: collapse;
 }
 
 table.entityTable td {
-	text-align: center;
+    text-align: center;
 }
 
 table.entityTable tr:nth-child(even) {
-	background-color: lightblue;
+    background-color: lightblue;
 }

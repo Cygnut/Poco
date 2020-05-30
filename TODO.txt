@@ -1,46 +1,46 @@
 TODOs:
     
     Main issues:
-		
-		commit.
-		use c_getTopScoredEntities on the web side to its fullest.
-		Handle rankings on ui going too far that data disappears.
-		Be able to skip to end (bottom of ranking).
-		
-		Fixed width, height table for rankings + fixed cell sizes etc.
-		Put vote button back.
-		Use cards for rankings?
-		Use cards for search?
-		
-		DON'T TRUNCATE BLURB IN DATABASE (MAY HAVE TO INCREASE FIELD LENGTH)
-		
-		Roadmap:
-			Split into 3 separate pages:
-				Vote			- Converted.
-				Scoreboard		- Converted.
-				Search			- Converted.
-			
-			Rework:
-				
-				Then, once all html is done, move to css.
-				
-				
-				Animation for cards.
-				Allow vote on cards.
-				Add numbering for score.
-				Use gif background for cards.
-				Style index page.
-			
-			
-			Add links from home:
-				Search
-				Top 10 overall
-				Top 10 film, tv etc
-			
-			
-			Change Vote to Hearthstone-esque voting i/f.
-		
-		
+        
+        commit.
+        use c_getTopScoredEntities on the web side to its fullest.
+        Handle rankings on ui going too far that data disappears.
+        Be able to skip to end (bottom of ranking).
+        
+        Fixed width, height table for rankings + fixed cell sizes etc.
+        Put vote button back.
+        Use cards for rankings?
+        Use cards for search?
+        
+        DON'T TRUNCATE BLURB IN DATABASE (MAY HAVE TO INCREASE FIELD LENGTH)
+        
+        Roadmap:
+            Split into 3 separate pages:
+                Vote            - Converted.
+                Scoreboard        - Converted.
+                Search            - Converted.
+            
+            Rework:
+                
+                Then, once all html is done, move to css.
+                
+                
+                Animation for cards.
+                Allow vote on cards.
+                Add numbering for score.
+                Use gif background for cards.
+                Style index page.
+            
+            
+            Add links from home:
+                Search
+                Top 10 overall
+                Top 10 film, tv etc
+            
+            
+            Change Vote to Hearthstone-esque voting i/f.
+        
+        
         Website:
             Need to attribute sources and make sure we aren't breaking any contractual agreements.
             DDoS
